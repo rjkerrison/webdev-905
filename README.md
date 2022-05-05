@@ -1,8 +1,8 @@
-# Welcome to WebDev 205 Paris
+# Welcome to WebDev 905 Paris
 
-Hello WebDev Paris 205!
+Hello WebDev Paris 905!
 
-Kicking off on 9th May February 2022, we'll have 9 weeks to become full-stack web developers.
+Kicking off on 9th May 2022, we'll have 9 weeks to become full-stack web developers.
 
 ## Who's the team?
 
