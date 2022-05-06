@@ -1,0 +1,57 @@
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  font-weight: normal;
+}
+
+li {
+  font-weight: bold;
+  display: inline;
+}
+
+main {
+  background-color: rgba(211, 190, 69, 0.673);
+  color: red;
+}
+
+section {
+  background-color: rgb(9, 9, 72);
+  color: ghostwhite;
+}
+
+/* class selectors */
+.special {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+/* combine classes */
+.special.hidden.message {
+  display: block;
+}
+
+#extra-info {
+  border: 10px rgb(130, 16, 16) solid;
+}
+
+.special a {
+  color: rgba(211, 190, 69);
+}
+
+picture {
+  display: block;
+  /* Centre images inside picture */
+  text-align: center;
+}
+
+picture img {
+  /* Let it be as wide as possible */
+  max-width: 100%;
+  /* Let it grow relative to its width */
+  height: auto;
+}
