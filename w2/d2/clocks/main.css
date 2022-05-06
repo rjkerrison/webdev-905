@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Metrophobic&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 32px;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Metrophobic', sans-serif;
+}
+
+body::before {
+  z-index: -1;
+  content: '';
+  animation: blur-wobble 5s ease-in-out infinite alternate;
+  filter: blur(1.5rem);
+  background-image: url(https://poussiere-virtuelle.com/wp-content/uploads/2016/07/metronomy-the-english-riviera-768x768.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes blur-wobble {
+  from {
+    filter: blur(0.5rem);
+  }
+  to {
+    filter: blur(2.5rem);
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.clock {
+  flex: 1 1;
+  flex-basis: 30%;
+  background-color: rgba(35, 128, 227, 0.75);
+  box-shadow: 0.5rem 0rem 0.5rem 0 rgba(47, 57, 69, 0.75);
+  mix-blend-mode: exclusion;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+  transition: all 0.5s;
+}
+.clock:hover {
+  transform: scale(1.125);
+  box-shadow: 1rem 0rem 1rem -0.5rem rgba(47, 57, 69, 0.75);
+}
+
+.clock-display {
+  font-family: 'Major Mono Display', monospace;
+  font-size: 1.5em;
+  padding: 0;
+}
+
+.start {
+  /* animation-name: double-size-wobble; */
+  animation-duration: calc(4 * calc(60s / 121));
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: calc(-0.5 * calc(60s / 121));
+}
+
+.start .clock {
+  --bpm: calc(60s / 121);
+  animation-name: size-wobble, double-size-wobble;
+  animation-duration: calc(8 * var(--bpm)), calc(4 * var(--bpm));
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: calc((var(--beat) - 0.5) * var(--bpm)),
+    calc(1.5 * var(--bpm));
+}
+
+.clock:nth-of-type(1) {
+  --beat: 1;
+}
+.clock:nth-of-type(2) {
+  --beat: 2;
+}
+.clock:nth-of-type(3) {
+  --beat: 3;
+}
+.clock:nth-of-type(4) {
+  --beat: 5;
+}
+.clock:nth-of-type(5) {
+  --beat: 6;
+}
+.clock:nth-of-type(6) {
+  --beat: 7;
+}
+
+@keyframes double-size-wobble {
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1);
+  }
+}
+@keyframes size-wobble {
+  45% {
+    background-color: rgba(35, 128, 227, 0.75);
+  }
+  50% {
+    background-color: rgba(169, 162, 79, 0.75);
+  }
+  55% {
+    background-color: rgba(35, 128, 227, 0.75);
+  }
+}

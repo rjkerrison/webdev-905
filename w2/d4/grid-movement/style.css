@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: flex;
+  height: 800px;
+  width: 800px;
+  flex-wrap: wrap;
+}
+
+.cell {
+  border: 1px solid green;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.marmalade {
+  background-image: url('https://static.wikia.nocookie.net/paddingtonbear/images/9/95/Jar_of_Marmalade.png');
+}
+
+.marmalade.eaten {
+  background-image: url('https://static.wikia.nocookie.net/paddingtonbear/images/f/fa/Spilled_Jar_of_Marmalade.png');
+}
+
+.paddington {
+  background-image: url('https://2.bp.blogspot.com/-kQFVZT-wee4/XFW4-K-crkI/AAAAAAAAI_U/60FpZ-gaeJEitxhvBev2gcI1xOUrVy1YwCLcBGAs/s1600/Paddington%2BTransparent.png');
+}
+.paddington.left {
+  transform: rotate(-90deg);
+}
+
+.paddington.marmalade.eaten {
+  background-image: url('https://2.bp.blogspot.com/-kQFVZT-wee4/XFW4-K-crkI/AAAAAAAAI_U/60FpZ-gaeJEitxhvBev2gcI1xOUrVy1YwCLcBGAs/s1600/Paddington%2BTransparent.png'),
+    url('https://static.wikia.nocookie.net/paddingtonbear/images/f/fa/Spilled_Jar_of_Marmalade.png');
+}

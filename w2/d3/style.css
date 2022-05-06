@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Varela+Round&display=swap');
+
+@font-face {
+  font-family: 'Bodoni Antiqua';
+  src: url('../../fonts/OPTIBodoni-Antiqua.otf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 4rem;
+  font-family: 'Gideon Roman', cursive;
+  margin: 1rem 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+h2 {
+  font-size: 2rem;
+}
+body {
+  font-family: 'Varela Round', sans-serif;
+  padding: 2rem;
+  background-image: url('https://images7.alphacoders.com/550/thumb-1920-550739.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+main {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-image: linear-gradient(
+    45deg,
+    hsla(210, 32%, 59%, 0.719),
+    rgba(255, 255, 255, 0.541)
+  );
+  /* Auto left-right margin makes blocks centred */
+  margin: 0 auto;
+  width: 80vw;
+  height: 60vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+h2 {
+  font-family: 'Bodoni Antiqua';
+  font-size: 3rem;
+  width: max-content;
+}
+
+p {
+  font-size: 3rem;
+  font-family: 'Bodoni Antiqua';
+  margin: 0;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@keyframes sway {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.125);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+picture {
+  display: block;
+  /* Centre images inside picture */
+  text-align: center;
+}
+
+picture img {
+  /* Let it be as wide as possible */
+  max-width: 100%;
+  /* Let it grow relative to its width */
+  height: auto;
+}
+
+h2 {
+  margin: 0;
+}
+
+li {
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Inline #1 | http://127.0.0.1:5502/w1/d5/selectors.html */
+
+ul > li {
+  border: red 5px solid;
+}
+
+button {
+  font-size: 6rem;
+  font-family: 'Paddington';
+  padding: 1rem;
+  border: none;
+  box-shadow: 0 0.5rem 0.25rem hsla(0, 32%, 59%, 0.719);
+  border-radius: 1rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+button:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1.5rem 0.5rem hsla(0, 32%, 59%, 0.719);
+}
+
+#red {
+  background-color: hsl(0, 58%, 60%);
+}
+#yellow {
+  background-color: hsl(60, 58%, 60%);
+}
+#green {
+  background-color: hsl(120, 58%, 60%);
+}
+.red,
+.yellow,
+.green {
+  background-color: rgba(0, 0, 0, 0.705);
+  width: min-content;
+  height: min-content;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.red {
+  color: hsl(0, 58%, 60%);
+}
+.yellow {
+  color: hsl(60, 58%, 60%);
+}
+.green {
+  color: hsl(120, 58%, 60%);
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.container > * {
+  flex: 20% 0 1;
+}
