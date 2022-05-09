@@ -1,7 +1,7 @@
 // Conditional
 
 const isTodayMonday = true
-const isItSnowing = true
+const isItSnowing = false
 
 if (isTodayMonday) {
   console.log('How was your weekend?')
@@ -30,15 +30,16 @@ const dayOfWeek = 'Monday'
 
 switch (dayOfWeek) {
   case 'Monday':
-    console.log('It is very early!')
+    console.log('It is very early in the week!')
+    break
   case 'Tuesday':
     console.log('There are at least four more days of class this week, yay!')
     break
   case 'Wednesday':
-    console.log('halfway')
+    console.log('We are halfway through the week')
     break
   default:
     // like the else in an if-else block
-    console.log('oh no it is not early in the week now')
+    console.log('Oh no! It is not early in the week now!')
     break
 }

@@ -35,6 +35,11 @@ console.log(notNecessarilyBoolean)
 console.log(0 || 'hello')
 console.log(0 && 'hello')
 
+const name = ''
+const defaultName = 'default name'
+
+console.log(name || defaultName)
+
 const age = 28
 const isOver30 = age > 30
 console.log(isOver30)

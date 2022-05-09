@@ -2,10 +2,11 @@
 
 // for-loop
 // for (initialiser; continue condition; incrementer)
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 21; i++) {
   console.log(`i is now ${i}`)
 }
 
+const startTime = Date.now()
 let someName = 'b'
 // Always be sure they will exit
 // the condition needs to be false eventually
@@ -13,6 +14,10 @@ while (someName.length < 50) {
   someName += 'aa'
 
   if (someName.length > 30) {
+    break
+  }
+  // exiting after one second
+  if (Date.now() - startTime > 1000) {
     break
   }
 }
@@ -42,14 +47,14 @@ for (const letter of 'Robin') {
   console.log(letter)
 }
 
-const myClass = {
+const myProgrammingLanguages = {
   javascript: true,
   html: true,
   css: true,
   rust: false,
 }
 
-for (const key in myClass) {
+for (const key in myProgrammingLanguages) {
   console.log(key)
 }
 
