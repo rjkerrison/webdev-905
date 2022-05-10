@@ -1,97 +1,81 @@
 // square brackets []
 
 const names = ['Robin', 'Florian', 'Pauline']
+console.log(names.length) // 3
 
 function greetPerson(name) {
   console.log(`Hola, ${name}!`)
 }
 
 // Accessing from an array
-console.log(names[1])
+console.log(names[0])
+greetPerson(names[1])
+
 // arrays can be modified / are mutable
-names[2] = 'Marco'
-
-// We can add things like this
-names[3] = 'Gary'
-names[5] = 'Ibrahim'
-
+names[0] = 'Valerian'
 console.log(names)
-console.log(names.length)
-console.log(names[4])
 
-// Usually, we PUSH items onto the end
-names.push('Abdou')
+// We can add things
+names[3] = 'Begonia'
+names[5] = 'Sebastian'
+console.log(names[5], names[4], names[3], names[2])
+
+// But usually, we PUSH items onto the end
+names.push('Tzu Yu')
+names.push('Haroun')
 console.log(names)
 
 // LOOPING
-
 const aNames = []
 // for-loop
 for (let i = 0; i < names.length; i++) {
+  if (names[i]) {
+    // greet everyone using i as an indexer of names
+    greetPerson(names[i])
+  }
+
+  // we are checking every name in names
   if (names[i] && names[i].indexOf('a') !== -1) {
+    // if it contains an 'a', we store it in aNames
     aNames.push(names[i])
   }
 }
-console.log(aNames)
+console.log('names containing "a":', aNames)
 
 // forEach is for executing the
 // same function for each of the items
 aNames.forEach(function (item) {
   console.log(`'${item}' contains the letter 'a'`)
 })
+// these two loops are equivalent
+for (let i = 0; i < aNames.length; i++) {
+  console.log(`'${aNames[i]}' contains the letter 'a'`)
+}
+for (let name of aNames) {
+  console.log(`'${name}' contains the letter 'a'`)
+}
 
 // Mapping is for creating new arrays from old ones
 const newNames = aNames.map(function (item) {
-  return item + item
+  return item + ' is ' + item + '!'
 })
 console.log('newNames', newNames)
 
-/* Manipulating items in an array
-- push
-- pop
-- shift
-- unshift
-- splice
-- slice
-*/
-console.log(57, newNames.push('HannahHannah'))
-console.log(58, newNames)
-console.log(59, newNames.pop()) // returns and removes last item
-console.log(60, newNames)
+// forEach and map are ARRAY METHODS
+// this means that they are functions that operate on an array
+// and we call them with arrayName.methodName()
+const numbers = [4, 8, 15, 16, 23, 42]
 
-console.log(62, newNames.shift()) // returns and removes first item
-console.log(63, newNames)
-console.log(64, newNames.unshift('PaulinePauline'))
-console.log(65, newNames)
+// map creates a new array, but does not modify the original
+numbers.map(function (item) {
+  return item ** 2
+})
 
-// Splice vs slice
-const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+// forEach executes a function for each item in the array, but does not modify the original
+numbers.forEach(function (item) {
+  return item ** 2
+})
 
-console.log(alphabet.splice(5)) // returns and removes
-console.log(alphabet)
-console.log(alphabet.slice(2)) // returns
-console.log(alphabet)
-
-const alphabetLower = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-console.log(alphabetLower.splice(3, 2)) // returns and removes 2
-console.log(alphabetLower)
-console.log(alphabetLower.slice(1, 3)) // returns
-console.log('negative; counting from the right', alphabetLower.slice(1, -2))
-
-// splice can also INSERT
-console.log(alphabetLower)
-console.log(alphabetLower.splice(1, 0, 'ADDED', 'ANOTHER ADDED')) // removes and inserts
-console.log(alphabetLower)
-// 'this one disappears' is ignored because it's in the wrong place and is treated like the number 0
-console.log(alphabetLower.splice(1, 'this one disappears', 'this is added')) // removes and inserts
-console.log(alphabetLower)
-
-// splitting a string
-const className = 'WebDev 905'
-console.log(className.split(''))
-
-console.log(className.split(' ')) // break into words
-console.log(className.split('e'))
-
-console.log('Robin, James, Kerrison'.split(', '))
-console.log(alphabetLower.join(','))
+numbers.forEach(function (item) {
+  console.log(item ** 2)
+})
