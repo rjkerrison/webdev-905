@@ -136,6 +136,21 @@ function badName() {
             Weird way: <code>.unshift()</code>.
           </p>
         </>,
+        <h2>
+          What does it mean for arrays and strings to be <i>zero-based</i> in
+          JavaScript
+        </h2>,
+        <>
+          <p>
+            It means that the first element is accessed at index 0, the second
+            at 1, etc.
+          </p>
+          <pre>
+            <code>{`const fruits = ['Apple', 'Banana', 'Cherry']
+const apple = fruits[0] // 'Apple', because 0 is the first element in the array!
+const a = apple[0] // 'A', because 0 is the first character in the string!`}</code>
+          </pre>
+        </>,
         <h2>What does it mean for a value to be "falsey"?</h2>,
         <p>
           It means it is evaluated in boolean expressions like{' '}
