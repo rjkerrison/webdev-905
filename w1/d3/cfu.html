@@ -84,9 +84,19 @@
     <script type="text/babel">
       const questions = [
         <h2 className='paddington'>JavaScript Basics</h2>,
-        <h2>What are the five JavaScript data types?</h2>,
+        <h2>What are the JavaScript data types?</h2>,
         <ol>
-          {['Number', 'String', 'Boolean', 'Function', 'Object'].map((a) => (
+          {[
+            'Number',
+            'String',
+            'Boolean',
+            'Null',
+            'Undefined',
+            'BigInt (for big integers)',
+            'Symbol (a unique key, not often used)',
+            'Function',
+            'Object',
+          ].map((a) => (
             <li key={a}>{a}</li>
           ))}
         </ol>,
