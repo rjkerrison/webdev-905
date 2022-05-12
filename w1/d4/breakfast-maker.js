@@ -37,3 +37,6 @@ breakfastMaker(
   'Morgane'
 )
 breakfastMaker(makeToast, makeBlackTeaWithMilk, 'Julien')
+
+const result = 456 + 78
+result
