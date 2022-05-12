@@ -34,6 +34,6 @@ breakfastMaker(makeTwoSlicesOfToast, makeBlackTeaWithMilk, 'Robin')
 breakfastMaker(
   (diner) => makeToast({ slices: 5 }, diner),
   makeBlackTeaWithMilk,
-  'Katya'
+  'Morgane'
 )
-breakfastMaker(makeToast, makeBlackTeaWithMilk, 'Pauline')
+breakfastMaker(makeToast, makeBlackTeaWithMilk, 'Julien')

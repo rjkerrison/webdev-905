@@ -4,9 +4,9 @@ const greeting = 'Hello'
 // of HOISTING — JavaScript reads function declaration names
 // before processing the rest of the file,
 // so we can call them early
-greetName('Akanksha')
+greetName('Begonia')
 // this will error - no hoisting
-// askHowTheyAre('Akanksha')
+// askHowTheyAre('Begonia')
 
 function greetName(personName) {
   console.log(`${greeting}, ${personName}!`)
@@ -18,4 +18,4 @@ const askHowTheyAre = (personName) => {
   console.log(`How are you, ${personName}?`)
 }
 
-askHowTheyAre('Akanksha')
+askHowTheyAre('Begonia')
