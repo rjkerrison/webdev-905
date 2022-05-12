@@ -2,26 +2,26 @@
 
 In groups of three, you will be assigned one of the following groups:
 
-- Group 1
-  - .indexOf()
-  - .map()
-  - .every()
-- Group 2
-  - .reduce()
-  - .splice()
-  - .find()
-- Group 3
-  - .slice()
-  - .filter()
-  - .sort()
-- Group 4
-  - .findIndex()
-  - .reverse()
-  - .forEach()
-- Group 5
-  - .includes()
-  - .some()
-  - .concat()
+- Caetano, Gaurav, Pierre
+  - `.indexOf()`
+  - `.map()`
+  - `.every()`
+- Valerian, Haroun, Sebastien
+  - `.findIndex()`
+  - `.splice()`
+  - `.reduce()`
+- Begonia, Stephane, Adrien
+  - `.slice()`
+  - `.filter()`
+  - `.sort()`
+- Hugo, Arthur, Tzu Yu
+  - `.find()`
+  - `.reverse()`
+  - `.forEach()`
+- Benedicte, Romain
+  - `.includes()`
+  - `.some()`
+  - `.concat()`
 
 Your goal is to create a short script which demonstrates each of your group's methods.
 

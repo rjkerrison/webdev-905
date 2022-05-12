@@ -6,7 +6,7 @@ function makeTea(options, diner) {
   )
 }
 
-function makeToast(options = { slices: 1 }, diner) {
+function makeToast(options = { slices: 1 }, diner = 'Florian') {
   console.log(`I have made ${options.slices} slices of toast for ${diner}`)
 }
 

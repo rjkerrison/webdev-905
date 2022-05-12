@@ -5,17 +5,22 @@ const greeting = 'Hello'
 // before processing the rest of the file,
 // so we can call them early
 greetName('Begonia')
-// this will error - no hoisting
+
+// *but we cannot call it here
 // askHowTheyAre('Begonia')
 
+// because this is a function DECLARATION
+// (i.e. we gave it a name after the function keyword)
+// we can call it anywhere in this file
 function greetName(personName) {
   console.log(`${greeting}, ${personName}!`)
 }
 
 // function expressions and arrow expressions
-// are NOT hoisted
+// are NOT hoisted (because consts and lets and vars are not hoisted)
 const askHowTheyAre = (personName) => {
   console.log(`How are you, ${personName}?`)
 }
 
+// we CAN call askHowTheyAre here*
 askHowTheyAre('Begonia')
