@@ -6,8 +6,8 @@
 // Object methods help us DO things with Objects
 const bike = {
   color: 'red',
-  brand: 'Canondale',
-  owner: 'Abdou',
+  brand: 'Peugeot',
+  owner: 'Robin',
   tyres: [
     { position: 'front', status: 'inflated' },
     {
