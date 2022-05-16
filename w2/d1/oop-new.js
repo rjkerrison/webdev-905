@@ -10,6 +10,11 @@ const ukraine = {
     song: 'Stefania',
   },
   points: 0,
+  getDescription() {
+    // This method should return the string
+    // "Ukraine's song is Stefania by Kalush Orchestra"
+  },
+
   // object method syntax
   assign(points) {
     console.log('this artist is', this.song.artist)
