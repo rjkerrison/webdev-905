@@ -12,10 +12,10 @@ const ukraine = {
   points: 0,
   getDescription() {
     // the getDescription method should return the string:
-    // "Ukraine's song is Stefania by Kalush Orchestra"
+    // "Ukraine's song is Stefania by Kalush Orchestra and it won 439 points"
 
     // HINT:
-    return ``
+    return `${this.name}'s song is ${this.song.song} by ${this.song.artist} and it won ${this.points} points`
   },
 
   // object method syntax
@@ -30,6 +30,8 @@ const ukraine = {
   //     this.points += points
   //   },
 }
+
+console.log(ukraine.getDescription())
 
 // functional programming
 function assignPoints(points, country) {
@@ -71,3 +73,4 @@ const uk = {
 
 uk.assign(10)
 console.log(uk.points)
+console.log(ukraine.getDescription())
