@@ -11,8 +11,11 @@ const ukraine = {
   },
   points: 0,
   getDescription() {
-    // This method should return the string
+    // the getDescription method should return the string:
     // "Ukraine's song is Stefania by Kalush Orchestra"
+
+    // HINT:
+    return ``
   },
 
   // object method syntax
