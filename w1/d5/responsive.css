@@ -4,17 +4,19 @@
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: calc(2rem + 2vw);
+  padding: 2rem;
 }
 
 .container p {
   font-size: 2rem;
 }
 
+.large-only {
+  display: none;
+}
+
 @media (min-width: 700px) {
-  h1 {
-    font-size: 5rem;
-  }
   .container p {
     font-size: 3rem;
     padding: 1rem;
@@ -27,5 +29,8 @@ h1 {
 @media (min-width: 800px) {
   .container p {
     font-size: 4rem;
+  }
+  .large-only {
+    display: block;
   }
 }
