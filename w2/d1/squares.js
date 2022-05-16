@@ -1,22 +1,29 @@
-// Create a class Rectangle with:
-
-//     A property width
-//     A property height
-//     A method constructor(width,height)
-//     A method calculatePerimeter()
-//     A method calculateArea()
-
-// Create a class Square that extends Rectangle add with:
-
-//     A property side (equals to the width and height)
-//     A method constructor(side)
-
 class Rectangle {
-  // TODO
+  // Create a class Rectangle with:
+  //     A method constructor(width,height)
+  constructor(width, height) {
+    //     A property width
+    this.width = width
+    //     A property height
+    this.height = height
+  }
+  //     A method calculatePerimeter()
+  calculatePerimeter() {
+    return 2 * (this.width + this.height)
+  }
+  //     A method calculateArea()
+  calculateArea() {
+    return this.width * this.height
+  }
 }
 
 class Square extends Rectangle {
-  // TODO
+  // Create a class Square that extends Rectangle add with:
+  //     A property side (equals to the width and height)
+  //     A method constructor(side)
+  constructor(side) {
+    super(side, side)
+  }
 }
 
 const r1 = new Rectangle(6, 7)
