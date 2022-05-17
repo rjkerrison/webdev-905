@@ -99,8 +99,9 @@ ul > li {
   border: red 5px solid;
 }
 
-button {
-  font-size: 6rem;
+button,
+input {
+  font-size: 4rem;
   font-family: 'Paddington';
   padding: 1rem;
   border: none;
