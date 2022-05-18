@@ -1,29 +1,38 @@
 // This is a class
-class OpenSourcePocketFightingAnimal {
+class OpenSourceValentine {
   // Classes always have constructors
-  constructor(name, moves, maxHitPoints) {
+  constructor(name, moves, affectionQuota) {
     this.name = name
     this.moves = moves
-    this.hitPoints = maxHitPoints
-    this.maxHitPoints = maxHitPoints
+    this.affectionReceived = 0
+    this.affectionQuota = affectionQuota
   }
   // Classes can have extra methods
-  isFainted() {
+  isSatisfied() {
     // we can refer to the instance of the class (the one we constructed) with the `this` keyword
-    return this.hitPoints <= 0
+    return this.affectionReceived >= this.affectionQuota
   }
   toString() {
-    return `${this.name} (${this.hitPoints}/${this.maxHitPoints})`
-  }
-  takeDamage(hit) {
-    this.hitPoints -= hit
-  }
-  useMoveAgainstOpponent(index, opponent) {
-    const move = this.moves[index]
-    console.log(
-      `${this.name} used ${move.name.toUpperCase()} against ${opponent.name}!`
+    const heartCount = Math.floor(
+      (10 * this.affectionReceived) / this.affectionQuota
     )
-    opponent.takeDamage(move.hit)
+    const affectionIndicator = new Array(10).fill('').map((_, i) => {
+      if (i < heartCount) {
+        return '💕'
+      } else {
+        return '⬜️'
+      }
+    })
+
+    return `${this.name} (${affectionIndicator.join('')})`
+  }
+  receiveAffection(points) {
+    this.affectionReceived += points
+  }
+  useActOfAffection(index, opponent) {
+    const move = this.moves[index]
+    console.log(move.getMessage(this, opponent))
+    opponent.receiveAffection(move.points)
     console.log(opponent.toString())
   }
   display(label) {
@@ -32,34 +41,53 @@ class OpenSourcePocketFightingAnimal {
     console.log(
       ` ${label} `.padStart(padLength + label.length, '=').padEnd(40, '=')
     )
-    console.log(this)
+    console.log(this.name + ' can')
+    this.moves.forEach((x) => console.log('--- ' + x.toString()))
   }
 }
 
-// We can extend OpenSourcePocketFightingAnimal with a specific species
-class Thundermouse extends OpenSourcePocketFightingAnimal {
-  constructor(moves, maxHitPoints) {
-    super('Thundermouse', moves, maxHitPoints)
+class ActOfAffection {
+  constructor(points) {
+    this.points = points
+  }
+  act(partner) {
+    partner.receiveAffection(this.points)
   }
 }
 
-const myOspfa = new Thundermouse(
-  [
-    { name: 'Electrocute', hit: 25 },
-    { name: 'Fist assault', hit: 15 },
-    { name: 'Blunt instrument', hit: 23 },
-  ],
-  50
+class Gift extends ActOfAffection {
+  getMessage(player, partner) {
+    return `${player.name} bought ${partner.name} a gift!`
+  }
+  toString() {
+    return 'Buy a gift'
+  }
+}
+
+class ActOfService extends ActOfAffection {
+  constructor(points, description, pastTense) {
+    super(points)
+    this.description = description
+    this.pastTense = pastTense
+  }
+  getMessage(player, partner) {
+    return `${player.name} ${this.pastTense} for ${partner.name}!`
+  }
+  toString() {
+    return this.description
+  }
+}
+
+const ronnie = new OpenSourceValentine(
+  'Ronnie',
+  [new Gift(40), new ActOfService(20, 'Do the laundry', 'did laundry')],
+  100
 )
 // or we can use the main class
-const theirOspfa = new OpenSourcePocketFightingAnimal(
-  'Firelizard',
-  [
-    { name: 'Stab', hit: 20 },
-    { name: 'Immolate', hit: 35 },
-    { name: 'Slap', hit: 5 },
-  ],
-  60
+const jordan = new OpenSourceValentine(
+  'Jordan',
+  [new Gift(40), new ActOfService(20, 'File their taxes', 'filed taxes')],
+  100
 )
 
 const readline = require('readline')
@@ -67,6 +95,12 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 })
+
+const sleep = (ms) => {
+  return new Promise((res, rej) => {
+    setTimeout(res, ms)
+  })
+}
 
 class Game {
   constructor(playerOne, playerTwo) {
@@ -78,41 +112,57 @@ class Game {
     this.playerTwo = playerTwo
 
     this.currentPlayer = 'playerOne'
-    this.currentOpponent = 'playerTwo'
+    this.currentPartner = 'playerTwo'
   }
 
   get player() {
     return this[this.currentPlayer]
   }
   get opponent() {
-    return this[this.currentOpponent]
+    return this[this.currentPartner]
   }
 
   switchPlayerOpponent() {
-    ;[this.currentPlayer, this.currentOpponent] = [
-      this.currentOpponent,
+    ;[this.currentPlayer, this.currentPartner] = [
+      this.currentPartner,
       this.currentPlayer,
     ]
   }
 
-  handleMove(index) {
-    this.player.useMoveAgainstOpponent(index, this.opponent)
+  async handleMove(index) {
+    await sleep(250)
+    this.player.useActOfAffection(index, this.opponent)
 
-    if (this.opponent.isFainted()) {
-      console.log(`${this.player} sufficiently injured ${this.opponent}!`)
+    if (this.opponent.isSatisfied()) {
+      console.log(
+        `${this.player} gave sufficient affection to ${this.opponent}!`
+      )
+      console.log('💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕')
       rl.close()
     } else {
       this.switchPlayerOpponent()
+      await sleep(500)
       this.promptUserForMove()
     }
   }
 
+  showStatus() {
+    console.log(`
+Current status:
+  ${this.player}
+  ${this.opponent}
+`)
+  }
+
   promptUserForMove() {
+    this.showStatus()
     rl.question(
-      `Which move would you like ${this.player} to use against ${this.opponent}?
+      `How would ${this.player.name} like to show ${
+        this.opponent.name
+      } their affection?
 
 Options are:
-  ${this.player.moves.map(({ name }, i) => `${i}. ${name}`).join('\n  ')}
+  ${this.player.moves.map((move, i) => `${i}. ${move}`).join('\n  ')}
 
 Indicate 0-${this.player.moves.length - 1}.
 > `,
@@ -121,11 +171,12 @@ Indicate 0-${this.player.moves.length - 1}.
   }
 
   start() {
+    console.log('💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕 💕💕💕💕💕')
     this.playerOne.display('Player One')
     this.playerTwo.display('Player Two')
     this.promptUserForMove()
   }
 }
 
-const game = new Game(myOspfa, theirOspfa)
+const game = new Game(ronnie, jordan)
 game.start()
