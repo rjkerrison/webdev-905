@@ -26,6 +26,14 @@ class OpenSourcePocketFightingAnimal {
     opponent.takeDamage(move.hit)
     console.log(opponent.toString())
   }
+  display(label) {
+    const padLength = 20 - Math.floor(label.length / 2)
+
+    console.log(
+      ` ${label} `.padStart(padLength + label.length, '=').padEnd(40, '=')
+    )
+    console.log(this)
+  }
 }
 
 // We can extend OpenSourcePocketFightingAnimal with a specific species
@@ -60,33 +68,64 @@ const rl = readline.createInterface({
   output: process.stdout,
 })
 
-console.log(' Player One Ospfa '.padStart(30, '=').padEnd(40, '='))
-console.log(myOspfa)
-console.log(' Player Two Ospfa '.padStart(30, '=').padEnd(40, '='))
-console.log(theirOspfa)
-
-function promptUserForMove(player, opponent) {
-  rl.question(
-    `Which move would you like ${player.toString()} to use against ${opponent.toString()}?
-  Options are:
-    ${player.moves.map(({ name }, i) => `${i}. ${name}`).join('\n  ')}
-  Indicate 0-${player.moves.length - 1}.
-  > `,
-    function (index) {
-      // The user has chosen a move — we'll now perform that move.
-      player.useMoveAgainstOpponent(index, opponent)
-
-      if (opponent.isFainted()) {
-        // If the opponent has fainted, we win
-        console.log(
-          `${player.toString()} sufficiently injured ${opponent.toString()}!`
-        )
-      } else {
-        // If the opponent hasn't fainted, they can now move
-        promptUserForMove(opponent, player)
-      }
+class Game {
+  constructor(playerOne, playerTwo) {
+    if (!playerOne || !playerTwo) {
+      throw new Exception('Game requires two players')
     }
-  )
+
+    this.playerOne = playerOne
+    this.playerTwo = playerTwo
+
+    this.currentPlayer = 'playerOne'
+    this.currentOpponent = 'playerTwo'
+  }
+
+  get player() {
+    return this[this.currentPlayer]
+  }
+  get opponent() {
+    return this[this.currentOpponent]
+  }
+
+  switchPlayerOpponent() {
+    ;[this.currentPlayer, this.currentOpponent] = [
+      this.currentOpponent,
+      this.currentPlayer,
+    ]
+  }
+
+  handleMove(index) {
+    this.player.useMoveAgainstOpponent(index, this.opponent)
+
+    if (this.opponent.isFainted()) {
+      console.log(`${this.player} sufficiently injured ${this.opponent}!`)
+      rl.close()
+    } else {
+      this.switchPlayerOpponent()
+      this.promptUserForMove()
+    }
+  }
+
+  promptUserForMove() {
+    rl.question(
+      `Which move would you like ${this.player} to use against ${this.opponent}?
+
+Options are:
+  ${this.player.moves.map(({ name }, i) => `${i}. ${name}`).join('\n  ')}
+
+Indicate 0-${this.player.moves.length - 1}.
+> `,
+      (index) => this.handleMove(index)
+    )
+  }
+
+  start() {
+    this.playerOne.display('Player One')
+    this.playerTwo.display('Player Two')
+    this.promptUserForMove()
+  }
 }
 
-promptUserForMove(myOspfa, theirOspfa)
+const game = new Game(myOspfa, theirOspfa)
+game.start()
