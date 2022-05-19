@@ -1,3 +1,11 @@
+const healthBarSize = 20
+const healthBarIndicators = ['🥰', '💞', '💗', '💖', '💕']
+const randomHealthIndicator = () => {
+  return healthBarIndicators[
+    Math.floor(Math.random() * healthBarIndicators.length)
+  ]
+}
+
 // This is a class
 class OpenSourceValentine {
   // Classes always have constructors
@@ -14,17 +22,17 @@ class OpenSourceValentine {
   }
   toString() {
     const heartCount = Math.floor(
-      (10 * this.affectionReceived) / this.affectionQuota
+      (healthBarSize * this.affectionReceived) / this.affectionQuota
     )
-    const affectionIndicator = new Array(10).fill('').map((_, i) => {
+    const affectionIndicator = new Array(healthBarSize).fill('').map((_, i) => {
       if (i < heartCount) {
-        return '💕'
+        return randomHealthIndicator()
       } else {
         return '⬜️'
       }
     })
 
-    return `${this.name} (${affectionIndicator.join('')})`
+    return `${this.name}: ${affectionIndicator.join('')}`
   }
   receiveAffection(points) {
     this.affectionReceived += points
