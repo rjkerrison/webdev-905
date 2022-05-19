@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.grid {
+  display: flex;
+  height: 600px;
+  width: 600px;
+  flex-wrap: wrap;
+}
+
+.cell {
+  border: 1px solid green;
+  width: 60px;
+  height: 60px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.player {
+  background-color: red;
+}
+
+.food {
+  background-color: orange;
+}
