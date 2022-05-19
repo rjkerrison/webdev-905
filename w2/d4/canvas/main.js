@@ -32,11 +32,15 @@ function buildPath() {
   context.beginPath()
   // give directions
   // STARTING POINT for our path
-  context.moveTo(400, 100)
+  context.moveTo(420, 100)
   // DRAW AN EDGE
   context.lineTo(390, 160)
   // DRAW AN EDGE
   context.lineTo(340, 90)
+  context.lineTo(360, 0)
+  context.lineTo(440, 50)
+  context.lineTo(360, 80)
+  context.arcTo(400, 90, 420, 5, 20)
   // context.lineTo(280, 120)
   // end (and close) the path — draws an edge from end back to start
   context.closePath()
