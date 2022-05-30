@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Search</title>
+  </head>
+  <body>
+    <h1>Weather Search 3000</h1>
+    <form id="weather-search" method="GET" action="#">
+      <label for="city">City:</label>
+      <input type="search" name="city" id="city" />
+      <input type="submit" />
+    </form>
+    <div id="weather-result">
+      <!-- populated with results from API call -->
+    </div>
+    <p>
+      Powered by
+      <a href="https://openweathermap.org/api">Open Weather Map</a>
+    </p>
+    <script src="./main.js"></script>
+  </body>
+</html>
