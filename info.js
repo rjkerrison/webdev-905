@@ -192,6 +192,7 @@ const execute = async () => {
 
   switch (mode) {
     case 'pairs':
+      await addSuspense()
       getRandomGroups(2)
       break
     case 'groups':
