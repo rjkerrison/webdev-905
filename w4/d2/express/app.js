@@ -2,7 +2,6 @@
 
 // import the express functionality
 const express = require('express')
-const { mutateExecOptions } = require('nodemon/lib/config/load')
 const app = express()
 const port = 3000
 
