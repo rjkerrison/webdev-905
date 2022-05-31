@@ -2,8 +2,25 @@ const router = require('express').Router()
 
 router.get('/', (req, res, next) => {
   res.json({
-    status: 'happy',
+    status: 'hungry',
     appName: 'my-first-api',
+    classmates: [
+      'Robin',
+      'Hugueaux',
+      'Chataléré',
+      'Oeufs Bénédicte',
+      'Bégonia',
+      'Arthur',
+      'Xébaxtian le basque, le GOAT',
+      'Val-de-Marne',
+      'Adrien',
+      'I am the best :)',
+      'Romain hoo!',
+      'Pierre',
+      'Caetaneau, the last!',
+      'Tzuyu',
+      'Stephane',
+    ],
   })
 })
 
