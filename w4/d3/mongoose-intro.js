@@ -23,25 +23,30 @@ const Course = mongoose.model('Course', courseSchema)
 // third, we need to connect to mongoose
 const MONGO_URI = 'mongodb://localhost:27017/webdev-905'
 // TODO: connect
-const connection = mongoose
-  .connect(MONGO_URI)
-  .then((x) => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    // finally, let's do something
-    // TODO: use Course to insert, find, update, etc
 
-    // Course.create({
-    //   name: 'WebDev 905',
-    //   startDate: new Date(2022, 4, 9),
-    //   campus: 'Ironhack Paris',
-    // })
+function createCourse() {
+  return Course.create({
+    name: 'UX 905',
+    startDate: new Date(2022, 4, 9),
+    campus: 'Ironhack Paris',
+  })
+}
 
-    return Course.find()
-  })
-  .then((courses) => {
-    console.log(courses)
-    return mongoose.connection.close()
-  })
-  .catch((err) => {
+async function executeDatabaseThings() {
+  try {
+    const connection = await mongoose.connect(MONGO_URI)
+    console.log(
+      `Connected to Mongo! Database name: "${connection.connections[0].name}"`
+    )
+  } catch (err) {
     console.error(`Error connecting to mongo: ${MONGO_URI}.`, err)
-  })
+    return
+  }
+  await createCourse()
+
+  const courses = await Course.find()
+  console.log(courses)
+  return mongoose.connection.close()
+}
+
+executeDatabaseThings()
