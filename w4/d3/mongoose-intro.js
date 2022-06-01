@@ -26,10 +26,26 @@ const MONGO_URI = 'mongodb://localhost:27017/webdev-905'
 
 function createCourse() {
   return Course.create({
-    name: 'UX 905',
+    name: 'WebDev 905',
     startDate: new Date(2022, 4, 9),
     campus: 'Ironhack Paris',
+    teachers: [{ name: 'Robin' }, { name: 'Florian' }, { name: 'Pauline' }],
   })
+}
+
+function updateCourse() {
+  return Course.updateOne(
+    { name: 'WebDev 905' },
+    {
+      syllabus: {
+        modules: [
+          { name: 'The DOM' },
+          { name: 'REST API' },
+          { name: 'Modern Frontend Framework' },
+        ],
+      },
+    }
+  )
 }
 
 async function executeDatabaseThings() {
@@ -42,7 +58,7 @@ async function executeDatabaseThings() {
     console.error(`Error connecting to mongo: ${MONGO_URI}.`, err)
     return
   }
-  await createCourse()
+  await updateCourse()
 
   const courses = await Course.find()
   console.log(courses)
