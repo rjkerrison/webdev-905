@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs')
+const jsonwebtoken = require('jsonwebtoken')
 const User = require('../models/User.model')
 
 const router = require('express').Router()
@@ -64,9 +65,37 @@ router.post('/login', async (req, res, next) => {
     res.status(401).json({ message: 'password does not match' })
     return
   }
-  res
-    .status(200)
-    .json({ isLoggedIn: true, message: 'yayayaya you are ' + username })
+
+  const payload = { username }
+
+  const authToken = jsonwebtoken.sign(payload, process.env.TOKEN_SECRET, {
+    algorithm: 'HS256',
+    expiresIn: '1h',
+  })
+
+  res.status(200).json({ isLoggedIn: true, authToken })
+})
+
+router.get('/verify', async (req, res, next) => {
+  // Verify the bearer token is still valid
+  // get the bearer token from the header
+  const { authorization } = req.headers
+
+  // isolate the jwt
+  const token = authorization.replace('Bearer ', '')
+  console.log({ token })
+
+  try {
+    // verify the jwt with the jsonwebtoken package
+    const payload = jsonwebtoken.verify(token, process.env.TOKEN_SECRET)
+    console.log({ payload })
+
+    // send the user the payload
+    res.json({ token, payload })
+  } catch (error) {
+    console.error(error)
+    res.status(400).json({ message: 'Invalid token' })
+  }
 })
 
 module.exports = router
