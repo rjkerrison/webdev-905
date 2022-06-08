@@ -17,6 +17,8 @@ const isAuthenticated = async (req, res, next) => {
     const { username } = decodedJwt
     const user = await User.findOne({ username })
 
+    // req is the same object for each middleware/route handler
+    // over the course of a request's lifetime
     req.user = user
   } catch (error) {
     // invalid token

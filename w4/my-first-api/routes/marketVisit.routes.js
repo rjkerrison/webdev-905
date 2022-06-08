@@ -4,6 +4,7 @@ const Bear = require('../models/Bear.model.js')
 const Market = require('../models/Market.model.js')
 const MarketVisit = require('../models/MarketVisit.model.js')
 const isAuthenticated = require('../middleware/isAuthenticated')
+const isAdmin = require('../middleware/isAdmin.js')
 
 router.get('/', async (req, res, next) => {
   const marketVisits = await MarketVisit.find().populate(
@@ -82,7 +83,18 @@ router.post('/', isAuthenticated, async (req, res, next) => {
   }
 })
 
-// You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
+router.delete(
+  '/:marketVisitId',
+  isAuthenticated,
+  isAdmin,
+  async (req, res, next) => {
+    try {
+      await MarketVisit.findByIdAndDelete(req.params.marketVisitId)
+      res.sendStatus(204)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 
 module.exports = router
