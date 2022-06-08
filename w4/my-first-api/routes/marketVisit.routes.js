@@ -3,6 +3,7 @@ const { isValidObjectId } = require('mongoose')
 const Bear = require('../models/Bear.model.js')
 const Market = require('../models/Market.model.js')
 const MarketVisit = require('../models/MarketVisit.model.js')
+const isAuthenticated = require('../middleware/isAuthenticated')
 
 router.get('/', async (req, res, next) => {
   const marketVisits = await MarketVisit.find().populate(
@@ -28,7 +29,16 @@ router.get('/', async (req, res, next) => {
   res.json(marketVisits)
 })
 
-router.post('/', async (req, res, next) => {
+/* POST /market-visits
+  Creates a record in the market visits collection.
+
+  We want it to be protected, so that no unauthenticated user can call this endpoint.
+  We want to tell unauthenticated users that they are not authorized.
+*/
+
+router.post('/', isAuthenticated, async (req, res, next) => {
+  console.log(`Authenticated as ${req.user.username}`)
+
   try {
     let { bear, market, visitTime } = req.body
     if (!isValidObjectId(bear)) {

@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 // Contrary to the views version, all routes are controlled from the routes/index.js
 
 app.use('/api', require('./routes/index.routes'))
-app.use('/users', require('./routes/user.routes'))
+app.use('/auth', require('./routes/auth.routes'))
 app.use('/market-visits', require('./routes/marketVisit.routes'))
 app.use('/markets', require('./routes/market.routes'))
 app.use('/bears', require('./routes/bear.routes'))
