@@ -36,12 +36,12 @@ function App() {
       <Greeting />
       <Greeting />
       <Greeting />
-      {/* <TickerBoard
+      <TickerBoard
         messages={['Hello', 'How are you?']}
         count={2}
         size={24}
         theme={'dark'}
-      /> */}
+      />
       <ReactPlayer url='https://vimeo.com/channels/top/22439234' />
       <StudentCard name='Eva' week={7} info={{ city: 'BCN', course: 'WEB' }} />
       <StudentCard name='Mat' week={8} info={{ city: 'PAR', course: 'DATA' }} />
