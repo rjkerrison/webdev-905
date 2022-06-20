@@ -72,4 +72,13 @@ We installed the [React Snippets extension][extension] which allows us to create
 - `rafce`: generates a React arrow function component and an export statement
 - `rfce`: same, but a function declaration instead of an arrow function
 
+## React DevTools
+
+The React team created the React DevTools, an extension for Firefox and Chrome which allows you to view your page as React components.
+
+- [React DevTools for Firefox][firefox devtools]
+- [React DevTools for Chrome][chrome devtools]
+
+[firefox devtools]: https://addons.mozilla.org/en-US/firefox/addon/react-devtools/
+[chrome devtools]: https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 [extension]: https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
