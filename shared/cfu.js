@@ -1,6 +1,10 @@
 window.addEventListener('load', () => {
   const sections = Array.from(document.querySelectorAll('section'))
-  let sectionIndex = 0
+  sections.forEach((section, i) => {
+    section.id = `q${i}`
+  })
+
+  let sectionIndex = parseInt(window.location.hash.replace(/[#q]+/, '')) || 0
 
   const scroll = (direction) => {
     sectionIndex += direction
@@ -12,6 +16,7 @@ window.addEventListener('load', () => {
 
     const section = sections[sectionIndex]
     section.scrollIntoView()
+    window.location.hash = section.id
   }
 
   document.addEventListener('keydown', (event) => {
