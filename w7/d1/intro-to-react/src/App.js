@@ -9,8 +9,9 @@ function App() {
 
   return (
     <div className='App'>
-      <Button text='Click me!' />
-      <Button text='Do not click me!!' isFancy={true} />
+      <p>Something something cookies etc</p>
+      <Button text='Cancel' />
+      <Button text='Accept' isFancy={true} />
       <List listItems={listItems} />
       <header className='App-header'>
         <img src={logo} className='App-logo' alt='logo' />
