@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Headline = () => {
-  return <div>Headline</div>
+  return <h1>My Cool App</h1>
 }
 
 export default Headline
