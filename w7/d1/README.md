@@ -62,3 +62,14 @@ const Button = (props) => {
 
 export default Button
 ```
+
+## Snippets
+
+When defining components, we have a lot of repeated code structure.
+
+We installed the [React Snippets extension][extension] which allows us to create React code with snippets, such as:
+
+- `rafce`: generates a React arrow function component and an export statement
+- `rfce`: same, but a function declaration instead of an arrow function
+
+[extension]: https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets
