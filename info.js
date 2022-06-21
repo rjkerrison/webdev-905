@@ -187,12 +187,15 @@ const evalProperty = (student, property) => {
 
 const execute = async () => {
   const args = process.argv.slice(2)
+  const flags = args.filter((x) => x.startsWith('--'))
   const mode = args.shift()
   let student, formatArg
 
   switch (mode) {
     case 'pairs':
-      await addSuspense()
+      if (!flags.includes('--fast')) {
+        await addSuspense()
+      }
       getRandomGroups(2)
       break
     case 'groups':
