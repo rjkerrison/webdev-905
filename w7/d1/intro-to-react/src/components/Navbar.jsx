@@ -8,7 +8,7 @@ class Navbar extends React.Component {
     return (
       <nav>
         <p>React - Components &amp; props</p>
-        <Button text='Cancel' />
+        <Button text='Cancel' handleClick={() => alert('cancelled')} />
         <Button text='Accept' isFancy={true} />
       </nav>
     )

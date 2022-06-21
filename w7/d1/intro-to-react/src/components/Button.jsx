@@ -4,7 +4,10 @@ const Button = (props) => {
   console.log(props)
 
   return (
-    <button className={props.isFancy ? 'fancy-button' : 'regular-button'}>
+    <button
+      className={props.isFancy ? 'fancy-button' : 'regular-button'}
+      onClick={props.handleClick || (() => {})}
+    >
       {props.text}
     </button>
   )
