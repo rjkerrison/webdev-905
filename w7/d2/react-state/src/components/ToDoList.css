@@ -1,0 +1,58 @@
+.todo {
+  background: #e3f0fa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  padding: 1rem 0.5rem;
+
+  text-align: left;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.todo h2 {
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+}
+
+.todo form {
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.todo input {
+  height: 47px;
+  font-size: inherit;
+  flex: 50% 1 1;
+  min-width: 0;
+}
+
+.todo input[type='text'] {
+  background: #d8e5f0;
+  border: 1px solid #000000;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.todo input[type='submit'] {
+  flex: 25% 1 1;
+  background: #3f6fb8;
+  color: white;
+  border: none;
+  width: 104px;
+
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.todo .good {
+  background-color: rgb(175, 238, 175);
+}
+.todo .bad {
+  background-color: rgb(238, 178, 175);
+}
