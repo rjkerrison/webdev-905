@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 
-const AddFlowerForm = () => {
+const AddFlowerForm = ({ addFlower }) => {
   const [name, setName] = useState('')
   const [image, setImage] = useState('http://fillmurray.com/200/200')
   const [price, setPrice] = useState(10)
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    // submission of form all happens here
+    const newFlower = { name, image, price }
+    addFlower(newFlower)
   }
 
   return (
@@ -44,8 +48,8 @@ const AddFlowerForm = () => {
             name='price'
             id='price'
             placeholder='you know what a price is'
-            value={price}
-            onChange={(event) => setPrice(parseInt(event.target.value) || 0)}
+            value={price || ''}
+            onChange={(event) => setPrice(parseInt(event.target.value))}
           />
         </div>
         <input type='submit' value='Add Flower' />

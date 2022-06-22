@@ -1,11 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
 
 import AddFlowerForm from './AddFlowerForm'
+import AddFlowerFormAlt from './AddFlowerFormAlt'
 import Flower from './Flower'
 
-import flowers from './flowers.json'
+import flowersFromJson from './flowers.json'
 
 const FlowerList = ({ addItemToCart }) => {
+  const [flowers, setFlowers] = useState(flowersFromJson)
+
+  const addFlower = (newFlower) => {
+    // add it to the list of flowers
+    setFlowers([...flowers, newFlower])
+  }
+
   return (
     <div className='flower-list'>
       <h2>Flowers!</h2>
@@ -18,7 +27,7 @@ const FlowerList = ({ addItemToCart }) => {
         ))}
       </ul>
 
-      <AddFlowerForm />
+      <AddFlowerFormAlt addFlower={addFlower} />
     </div>
   )
 }
