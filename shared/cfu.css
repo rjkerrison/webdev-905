@@ -39,11 +39,8 @@ h1 {
 
 ul {
   font-weight: normal;
-}
-
-li {
-  font-weight: bold;
-  display: inline;
+  font-size: 2rem;
+  font-family: 'Varela Round';
 }
 
 main {
