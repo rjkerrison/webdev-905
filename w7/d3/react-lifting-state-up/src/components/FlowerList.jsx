@@ -6,6 +6,7 @@ import AddFlowerFormAlt from './AddFlowerFormAlt'
 import Flower from './Flower'
 
 import flowersFromJson from './flowers.json'
+import './FlowerList.css'
 
 const FlowerList = ({ addItemToCart }) => {
   const [flowers, setFlowers] = useState(flowersFromJson)

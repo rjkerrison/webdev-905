@@ -15,7 +15,7 @@ const Flower = ({ name, image, price, addItemToCart }) => {
       <picture>
         <img src={image} alt={name} />
       </picture>
-      <div>
+      <div className='cart-controls'>
         <div className='price'>{price} €</div>
         <AddToCart addToCart={addCurrentFlowerToCart} />
       </div>

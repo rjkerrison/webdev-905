@@ -2,6 +2,12 @@
   display: flex;
   border: 1px solid black;
   border-radius: 1rem;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.flower h2 {
+  flex: 50% 1 1;
 }
 
 .flower picture {
@@ -12,4 +18,15 @@
 .flower picture img {
   display: block;
   max-width: 100%;
+}
+
+.flower .cart-controls {
+  flex: 25% 1 1;
+}
+
+.flower button {
+  font-size: inherit;
+  border: none;
+  background-color: rebeccapurple;
+  color: white;
 }

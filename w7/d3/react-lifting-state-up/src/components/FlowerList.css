@@ -1,0 +1,8 @@
+.flower-list ul {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
