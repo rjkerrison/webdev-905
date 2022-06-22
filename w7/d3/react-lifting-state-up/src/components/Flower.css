@@ -1,0 +1,15 @@
+.flower {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.flower picture {
+  display: block;
+  max-width: 5rem;
+}
+
+.flower picture img {
+  display: block;
+  max-width: 100%;
+}

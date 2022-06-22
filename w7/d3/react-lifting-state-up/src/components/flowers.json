@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Tulip",
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsecure.i.telegraph.co.uk%2Fmultimedia%2Farchive%2F02899%2Ftulipnegrita_2899511k.jpg&f=1&nofb=1",
+    "price": 21
+  },
+  {
+    "name": "Venus Fly Trap",
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhorticulture.co.uk%2Fwp-content%2Fuploads%2F2019%2F08%2Fvenusflytrap-header-scaled.jpg&f=1&nofb=1",
+    "price": 14
+  },
+  {
+    "name": "Delilah",
+    "image": "https://www.floraqueen.com/blog/wp-content/uploads/2020/03/shutterstock_1138781099.jpg",
+    "price": 97.5
+  }
+]
