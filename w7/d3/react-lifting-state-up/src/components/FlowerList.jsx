@@ -1,4 +1,6 @@
 import React from 'react'
+
+import AddFlowerForm from './AddFlowerForm'
 import Flower from './Flower'
 
 import flowers from './flowers.json'
@@ -15,6 +17,8 @@ const FlowerList = ({ addItemToCart }) => {
           </li>
         ))}
       </ul>
+
+      <AddFlowerForm />
     </div>
   )
 }

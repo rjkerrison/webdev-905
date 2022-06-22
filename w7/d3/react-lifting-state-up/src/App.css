@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  font-size: 2rem;
+}
+input {
+  font-size: inherit;
+}
