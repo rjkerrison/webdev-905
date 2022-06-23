@@ -1,39 +1,40 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import './App.css'
-
-const authToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYmluIiwiaWF0IjoxNjU1OTc2NzMxLCJleHAiOjE2NTU5NzczMzF9.kvGZc-cU78XiViIEQT71pgvW2-1A7SbJk_riLmuw7s0'
+import About from './pages/About'
+import Home from './pages/Home'
+import Impossible from './pages/Impossible'
+import Layout from './pages/Layout'
+import NotFound from './pages/NotFound'
+import Places from './pages/Places'
 
 function App() {
-  const [places, setPlaces] = useState([])
+  const [userFirstName, setUserFirstName] = useState('')
 
   useEffect(() => {
-    let config = {
-      method: 'get',
-      url: 'https://hangout-app.herokuapp.com/api/places?page=1&limit=10',
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-      },
-    }
-
-    axios(config)
-      .then((response) => {
-        setPlaces(response.data.results)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    console.log('MOUNTING!')
   }, [])
 
   return (
     <div className='App'>
-      {places.map(({ name, address }) => (
-        <p>
-          {name}, {address}
-        </p>
-      ))}
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route path='' element={<Home firstName={userFirstName} />} />
+            <Route path='places' element={<Places />} />
+            {/* <Route path='places/:id' element={<PlaceDetails />} /> */}
+            <Route
+              path='about'
+              element={
+                <About setName={setUserFirstName} name={userFirstName} />
+              }
+            />
+            <Route path='impossible' element={<Impossible />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

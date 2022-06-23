@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+a.selected {
+  background: rgb(202, 232, 202);
+}
