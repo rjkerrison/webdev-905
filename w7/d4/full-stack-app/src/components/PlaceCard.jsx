@@ -1,5 +1,3 @@
-import React from 'react'
-
 import './PlaceCard.scss'
 
 const PlaceCard = ({ name, address, typology, _id }) => {
