@@ -39,3 +39,23 @@ useEffect(
   ]
 )
 ```
+
+## Route parameters
+
+Route parameters allow us to create dynamic pages.
+
+We can define our route with a parametrised identifier.
+
+```jsx
+<Route path='/schools/:id' element={<School />} />
+```
+
+Inside our page, we can retrieve the current value of `id` from the real URL with `useParams()`.
+
+```jsx
+const School = () => {
+  const { id } = useParams()
+
+  return <p>School with id: {id}</p>
+}
+```
