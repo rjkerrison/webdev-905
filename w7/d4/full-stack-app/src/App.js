@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Impossible from './pages/Impossible'
 import Layout from './pages/Layout'
 import NotFound from './pages/NotFound'
+import PlaceDetails from './pages/PlaceDetails'
 import Places from './pages/Places'
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             <Route path='' element={<Home firstName={userFirstName} />} />
             <Route path='places' element={<Places />} />
-            {/* <Route path='places/:id' element={<PlaceDetails />} /> */}
+            <Route path='places/:placeId' element={<PlaceDetails />} />
             <Route
               path='about'
               element={

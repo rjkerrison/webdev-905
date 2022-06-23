@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './PlaceCard.scss'
 
 const PlaceCard = ({ name, address, typology, _id }) => {
@@ -7,7 +8,9 @@ const PlaceCard = ({ name, address, typology, _id }) => {
       <p>
         {typology} à {address}
       </p>
-      <p>id: {_id}</p>
+      <p>
+        Found out more about <Link to={`/places/${_id}`}>{name}</Link>!
+      </p>
     </div>
   )
 }
