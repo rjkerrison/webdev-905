@@ -1,4 +1,9 @@
-# Hooks
+# Hooks and routing
+
+Today, we looked at React hooks like `useState` and `useEffect`,
+then explored how we can split our React application into pages with `react-router-dom`.
+
+## Hooks
 
 React's component lifecycle has three phases:
 
@@ -8,7 +13,7 @@ React's component lifecycle has three phases:
 
 **Updating** can happen numerous times during the life of a component.
 
-## `useEffect`
+### `useEffect`
 
 When we want to run a side effect for our component, we can declare it by passing a function to React's `useEffect` hook.
 
@@ -40,7 +45,7 @@ useEffect(
 )
 ```
 
-# Routes
+## React Router
 
 We use the `react-router-dom` package to mimic browser page behaviour.
 
@@ -52,7 +57,7 @@ A route looks like
 
 where `ContactUs` is a component defined in `./pages/ContactUs.jsx`.
 
-## Links
+### Links
 
 To prevent a browser navigation, we use a React Router link element.
 
@@ -60,7 +65,7 @@ To prevent a browser navigation, we use a React Router link element.
 <Link to="/about">About</Link>
 ```
 
-## Navigate
+### Navigate
 
 Sometimes, we want to redirect the user. We do so with the `Navigate` element.
 
@@ -68,7 +73,7 @@ Sometimes, we want to redirect the user. We do so with the `Navigate` element.
 <Navigate to="/error" />
 ```
 
-## Route parameters
+### Route parameters
 
 Route parameters allow us to create dynamic pages.
 
@@ -88,7 +93,7 @@ const School = () => {
 }
 ```
 
-### Use Params Example
+#### `useParams()` Example
 
 In ['./full-stack-app'](./full-stack-app), we have the following example use case of a URL parameter id.
 
