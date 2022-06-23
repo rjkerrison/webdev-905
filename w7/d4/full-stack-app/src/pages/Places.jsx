@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import PlaceCard from '../components/PlaceCard'
+
+import './Places.css'
 
 const authToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYmluIiwiaWF0IjoxNjU1OTc2NzMxLCJleHAiOjE2NTU5NzczMzF9.kvGZc-cU78XiViIEQT71pgvW2-1A7SbJk_riLmuw7s0'
@@ -28,11 +31,11 @@ const Places = () => {
   return (
     <div>
       <h1>PLACES!</h1>
-      {places.map(({ name, address }) => (
-        <p key={name}>
-          {name}, {address}
-        </p>
-      ))}
+      <div className='place-list'>
+        {places.map((place) => (
+          <PlaceCard key={place._id} {...place} />
+        ))}
+      </div>
     </div>
   )
 }
