@@ -26,6 +26,7 @@ When mounting a component, we need to fetch relevant information from our API.
 Once we receive the data, we need to store it in state.
 
 ```jsx
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const BicycleList = () => {
@@ -62,3 +63,85 @@ const BicycleList = () => {
 ```
 
 We make the request in a `useEffect` because we only want to do it _when mounting the component_.
+
+### Make your `POST` requests in an event handler
+
+In general, we only want to POST as a result of a user form submission.
+
+```jsx
+const AddBicycleForm = () => {
+  const [brand, setBrand] = useState('')
+  const [gearCount, setGearCount] = useState(1)
+
+  const handleSubmit = (event) => {
+    // always prevent the default submission behaviour
+    event.preventDefault()
+
+    axios({
+      method: 'POST',
+      url: 'http://myapi.example.com/api/bicycles',
+      // The hard part is sending the right data.
+      // We have to be sure we're matching the format that the API expects.
+      data: {
+        brand,
+        gears: gearCount,
+      },
+    }).then(() => {
+      // reset the form
+      // optionally redirect the user
+    })
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* inputs updating state */}
+      {/* input with type=submit */}
+    </form>
+  )
+}
+```
+
+## Form Validation
+
+We can add checks in `handleSubmit` which verify the user has given valid data.
+These are known as _validation checks_.
+
+We may want to check a string has the right length, or matches a regex.
+We may want to check that numbers are within a certain range.
+
+If any of the validation checks fail, we can set a message in state, which we'll show to a user.
+
+```jsx
+const MyComponent = () => {
+  const [someField, setSomeField] = useState(null)
+  const [validationMessage, setValidationMessage] = useState('')
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    // Validation checks are after preventing the default behaviour, before the axios call
+    if (!isValidBySomeCriteria(someField)) {
+      setValidationMessage(
+        `SomeField value '${someField}' does not satisfy the so-and-so criterion.`
+      )
+      // It's essential to return early here to prevent the axios call.
+      return
+    }
+    // ... axios call etc
+  }
+
+  return (
+    <>
+      {/* ... */}
+      {validationMessage && (
+        <p className='message validation'>{validationMessage}</p>
+      )}
+    </>
+  )
+}
+```
+
+Here we would have defined the function `isValidBySomeCriteria` which can test the validity of `someField`.
+
+Validation checks in our front-end are for **giving the user useful feedback**.
+They are not about protecting data: our backend has to have the right policies in place to prevent invalid data from being saved to the database.
