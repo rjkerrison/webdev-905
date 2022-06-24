@@ -1,4 +1,4 @@
-# React Day 5: Integrating the frontend to the backend
+# Connecting a React frontend to the backend
 
 Today, we're going over the process of calling our backend API from our frontends.
 
