@@ -1,6 +1,6 @@
 # React State
 
-React only rerenders when necessary. Otherwise, everything is immutable: it never changes.
+React only rerenders when necessary. Otherwise, everything is _immutable_: it never changes.
 
 To get React to rerender our functional components, we have to _hook into_ its _state management_ with… the **`useState` hook**.
 
@@ -16,7 +16,7 @@ const [count, setCount] = useState(0)
 
 In this example, `count` is initialised to `0`.
 Whenever we call `setCount` with a new value,
-React will rerender this component with `count` as the new value.
+React will rerender this component, returning `count` as the new value.
 
 ```jsx
 import React, { useState } from 'react'
@@ -54,11 +54,11 @@ const listItems = items.map((item) => {
 })
 ```
 
-Every JSX element in an array should have a `key` attribute which is unique in the array.
+Every JSX element in an array needs a `key` attribute which is unique in the array.
 
 ## Forms
 
-Forms take a bit of work, because we have to update the state whenever an input changes.
+Forms take a lot of work, because we have to update the state whenever an input changes.
 
 ```jsx
 <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
@@ -68,6 +68,7 @@ Here, we're tracking our input's value as _name_ with a React state hook.
 
 In the form itself, we use `onSubmit` to intercept the form submission.
 We have to prevent the default behaviour, and then we can submit the form data.
+
 In the example below, our form sends its data to the `addNewStudent` prop that it received.
 
 ```jsx
